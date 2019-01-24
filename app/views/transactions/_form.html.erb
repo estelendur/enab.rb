@@ -1,15 +1,28 @@
 <%= form_with(model: [ @account, @account.transactions.build ], local: true) do |form| %>
-  <% if transaction.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+  <p>
+    <%= form.label :date %>
+    <%= form.date_field :date %>
+  </p>
 
-      <ul>
-      <% transaction.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <p>
+    <%= form.label :account %>
+    <%= form.collection_select :account, Account.all, :id, :name %>
+  </p>
+
+  <p>
+    <%= form.label :category %>
+    <%= form.collection_select :category, Category.all, :id, :name %>
+  </p>
+
+  <p>
+    <%= form.label :amount %>
+    <%= form.number_field :amount %>
+  </p>
+
+  <p>
+    <%= form.label :memo %>
+    <%= form.text_field :memo %>
+  </p>
 
   <div class="actions">
     <%= form.submit %>
