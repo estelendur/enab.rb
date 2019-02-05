@@ -30,7 +30,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
 
     if @category.update(category_params)
-      redirect_to @article
+      redirect_to @category
     else
       render 'edit'
     end
