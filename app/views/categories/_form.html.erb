@@ -11,6 +11,26 @@
     </div>
   <% end %>
 
+  <p>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :allocation %>
+    <%= form.number_field :allocation %>
+  </p>
+
+  <p>
+    <%= form.label :goal_amount %>
+    <%= form.number_field :goal_amount %>
+  </p>
+
+  <p>
+    <%= form.label :due_date %>
+    <%= form.date_field :due_date %>
+  </p>
+
   <div class="actions">
     <%= form.submit %>
   </div>

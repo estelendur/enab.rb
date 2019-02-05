@@ -1,4 +1,16 @@
-<%= form_with(model: [ @account, @account.transactions.build ], local: true) do |form| %>
+<%= form_with(model: @transaction, local: true) do |form| %>
+  <% if @transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+      <% transaction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <p>
     <%= form.label :date %>
     <%= form.date_field :date %>
@@ -6,12 +18,12 @@
 
   <p>
     <%= form.label :account %>
-    <%= form.collection_select :account, Account.all, :id, :name %>
+    <%= form.collection_select :account_id, Account.all, :id, :name %>
   </p>
 
   <p>
     <%= form.label :category %>
-    <%= form.collection_select :category, Category.all, :id, :name %>
+    <%= form.collection_select :category_id, Category.all, :id, :name %>
   </p>
 
   <p>

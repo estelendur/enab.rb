@@ -5,6 +5,7 @@ class AccountsController < ApplicationController
 
   def show
     @account = Account.find(params[:id])
+    @transaction = Transaction.new
   end
 
   def new
