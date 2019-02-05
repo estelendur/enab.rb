@@ -5,13 +5,21 @@
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Name</th>
+      <th>Allocated</th>
+      <th>Goal</th>
+      <th>Due</th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @categories.each do |category| %>
       <tr>
+        <td><%= category.name %></td>
+        <td><%= category.allocation %></td>
+        <td><%= category.goal_amount %></td>
+        <td><%= category.due_date %></td>
         <td><%= link_to 'Show', category %></td>
         <td><%= link_to 'Edit', edit_category_path(category) %></td>
         <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -23,3 +31,4 @@
 <br>
 
 <%= link_to 'New Category', new_category_path %>
+<%= link_to 'Main Page', budget_index_path %>
