@@ -1,5 +1,26 @@
 <h1>Overview</h1>
 
+<table>
+  <thead>
+    <th>Available</th>
+    <th>Allocated</th>
+    <th>Total</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @remaining_money %></td>
+      <td><%= @allocated_money %></td>
+      <td><%= @total_money %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Accounts</h2>
+<%= render partial: 'accounts/account', collection: @accounts %>
+
+<h2>Categories</h2>
+<%= render partial: 'categories/category', collection: @categories %>
+
 <%= link_to 'Accounts', accounts_path %>
 <%= link_to 'Categories', categories_path %>
 <%= link_to 'Transactions', transactions_path %>

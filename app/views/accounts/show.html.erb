@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p><strong>Name:</strong> <%= @account.name %></p>
+<%= render partial: 'account', object: @account %>
 
 <h2>Add a transaction:</h2>
 <%= render 'transactions/form' %>
 
 <h2>Transactions:</h2>
-<%= render @account.transactions %>
+<%= render partial: 'transactions/transaction', collection: @account.transactions %>
 
 <%= link_to 'Edit', edit_account_path(@account) %> |
 <%= link_to 'Back', accounts_path %>
