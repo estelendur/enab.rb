@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/new'
+  resources :users
   resources :transactions
   resources :accounts do
     resources :transactions
@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   end
   get 'budget/index'
   get '/register', to: 'users#new'
+  post '/register', to: 'users#create'
+  get '/users/:id', to: 'budget#index'
   root 'budget#index'
 end
