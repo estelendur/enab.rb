@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'budget#index'
   resources :users
   resources :transactions
   resources :accounts do
@@ -11,5 +12,7 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new'
   post '/register', to: 'users#create'
   get '/users/:id', to: 'budget#index'
-  root 'budget#index'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 end
