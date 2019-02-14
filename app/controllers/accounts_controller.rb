@@ -1,21 +1,31 @@
 class AccountsController < ApplicationController
+
+  before_action :authenticate_user!
   def index
-    @accounts = Account.all
+    @accounts = Account.where user_id: current_user.id
+    @accounts ||= []
   end
 
+  before_action :authenticate_user!
   def show
-    @account = Account.find(params[:id])
+    @account = Account.find_by id: params[:id], user_id: current_user.id
+    unless @account
+      redirect_to accounts_path
+    end
     @transaction = Transaction.new
   end
 
+  before_action :authenticate_user!
   def new
     @account = Account.new
   end
 
+  before_action :authenticate_user!
   def edit
-    @account = Account.find(params[:id])
+    @account = Account.find_by params[:id], user_id: current_user.id
   end
 
+  before_action :authenticate_user!
   def create
     @account = Account.new(account_params)
 
@@ -26,18 +36,20 @@ class AccountsController < ApplicationController
     end
   end
 
+  before_action :authenticate_user!
   def update
-    @account = Account.find(params[:id])
+    @account = Account.find_by params[:id], user_id: current_user.id
 
     if @account.update(account_params)
-      redirect_to @article
+      redirect_to @account
     else
       render 'edit'
     end
   end
 
+  before_action :authenticate_user!
   def destroy
-    @account = Account.find(params[:id])
+    @account = Account.find_by params[:id], user_id: current_user.id
     @account.destroy
 
     redirect_to accounts_path
@@ -45,6 +57,7 @@ class AccountsController < ApplicationController
 
   private
     def account_params
-      params.require(:account).permit(:name)
+      params[:account][:user_id] = current_user.id
+      params.require(:account).permit(:name, :user_id)
     end
 end

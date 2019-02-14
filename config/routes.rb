@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'budget#index'
   resources :users
   resources :transactions
@@ -9,10 +10,4 @@ Rails.application.routes.draw do
     resources :transactions
   end
   get 'budget/index'
-  get '/register', to: 'users#new'
-  post '/register', to: 'users#create'
-  get '/users/:id', to: 'budget#index'
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
 end

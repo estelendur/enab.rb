@@ -17,6 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 gem 'bcrypt', '3.1.12'
 gem 'rails-controller-testing'
+gem 'devise'
 
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 

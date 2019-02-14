@@ -22,6 +22,5 @@ class UsersRegisterTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_template 'budget/index'
-    assert is_logged_in?
   end
 end
