@@ -7,7 +7,10 @@ class CategoriesController < ApplicationController
 
   before_action :authenticate_user!
   def show
-    @category = Category.find_by params[:id], user_id: current_user.id
+    @category = Category.find_by id: params[:id], user_id: current_user.id
+    unless @category
+      redirect_to categories_path
+    end
     @transaction = Transaction.new
   end
 
@@ -18,7 +21,7 @@ class CategoriesController < ApplicationController
 
   before_action :authenticate_user!
   def edit
-    @category = Category.find_by params[:id], user_id: current_user.id
+    @category = Category.find_by id: params[:id], user_id: current_user.id
   end
 
   before_action :authenticate_user!
@@ -34,7 +37,7 @@ class CategoriesController < ApplicationController
 
   before_action :authenticate_user!
   def update
-    @category = Category.find_by params[:id], user_id: current_user.id
+    @category = Category.find_by id: params[:id], user_id: current_user.id
 
     if @category.update(category_params)
       redirect_to @category
@@ -45,7 +48,7 @@ class CategoriesController < ApplicationController
 
   before_action :authenticate_user!
   def destroy
-    @category = Category.find_by params[:id], user_id: current_user.id
+    @category = Category.find_by id: params[:id], user_id: current_user.id
     @category.destroy
 
     redirect_to categories_path
@@ -54,6 +57,6 @@ class CategoriesController < ApplicationController
   private
     def category_params
       params[:category][:user_id] = current_user.id
-      params.require(:category).permit(:name, :allocation, :goal_amount, :due_date)
+      params.require(:category).permit(:name, :allocation, :goal_amount, :due_date, :user_id)
     end
 end
