@@ -22,7 +22,7 @@ class AccountsController < ApplicationController
 
   before_action :authenticate_user!
   def edit
-    @account = Account.find_by params[:id], user_id: current_user.id
+    @account = Account.find_by id: params[:id], user_id: current_user.id
   end
 
   before_action :authenticate_user!
@@ -38,7 +38,7 @@ class AccountsController < ApplicationController
 
   before_action :authenticate_user!
   def update
-    @account = Account.find_by params[:id], user_id: current_user.id
+    @account = Account.find_by id: params[:id], user_id: current_user.id
 
     if @account.update(account_params)
       redirect_to @account
@@ -49,7 +49,7 @@ class AccountsController < ApplicationController
 
   before_action :authenticate_user!
   def destroy
-    @account = Account.find_by params[:id], user_id: current_user.id
+    @account = Account.find_by id: params[:id], user_id: current_user.id
     @account.destroy
 
     redirect_to accounts_path
