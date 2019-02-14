@@ -54,9 +54,5 @@ class AddDeviseToUsers < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true
     end
 
-    add_index :accounts, :user_id
-    add_index :transactions, :user_id
-    add_index :categories, :user
-
   end
 end
