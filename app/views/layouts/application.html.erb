@@ -18,6 +18,12 @@
         <%= link_to 'Log In', new_user_session_path %>
         <%= link_to 'Register', new_user_registration_path %>
       <% end %>
+    </div>
+    <div id="alpha-alert">
+      <hr />
+      <h3><strong>This software is in alpha release! Data persistence is not guaranteed and any element of the software can change at any time.</strong></h3>
+      <hr />
+    </div>
     <% flash.each do |message_type, message| %>
       <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
