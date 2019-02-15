@@ -39,7 +39,7 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.find_by id: params[:id], user_id: current_user.id
 
     if @transaction.update(transaction_params)
-      redirect_to @article
+      redirect_to @transaction
     else
       render 'edit'
     end

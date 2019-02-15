@@ -18,12 +18,12 @@
 
   <p>
     <%= form.label :allocation %>
-    <%= form.number_field :allocation %>
+    <%= form.number_field :allocation, step: 0.01 %>
   </p>
 
   <p>
     <%= form.label :goal_amount %>
-    <%= form.number_field :goal_amount %>
+    <%= form.number_field :goal_amount, step: 0.01 %>
   </p>
 
   <p>
