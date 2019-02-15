@@ -18,12 +18,12 @@
 
   <p>
     <%= form.label :account %>
-    <%= form.collection_select :account_id, Account.all, :id, :name %>
+    <%= form.collection_select :account_id, Account.where(user_id: current_user.id), :id, :name %>
   </p>
 
   <p>
     <%= form.label :category %>
-    <%= form.collection_select :category_id, Category.all, :id, :name %>
+    <%= form.collection_select :category_id, Category.where(user_id: current_user.id), :id, :name %>
   </p>
 
   <p>
