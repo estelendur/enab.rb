@@ -16,11 +16,10 @@
 </table>
 
 <h2>Accounts</h2>
-<%= render partial: 'accounts/account', collection: @accounts %>
+<%= render partial: 'accounts/table', collection: @accounts %>
 
 <h2>Categories</h2>
-<%= render partial: 'categories/category', collection: @categories %>
+<%= render partial: 'categories/table', collection: @categories %>
 
-<%= link_to 'Accounts', accounts_path %>
-<%= link_to 'Categories', categories_path %>
-<%= link_to 'Transactions', transactions_path %>
+<h2>Transactions</h2>
+<%= render partial: 'transactions/table', collection: @transactions %>
