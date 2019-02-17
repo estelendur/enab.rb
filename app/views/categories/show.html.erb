@@ -9,7 +9,7 @@
 <%= render 'transactions/form' %>
 
 <h2>Transactions:</h2>
-<%= render @category.transactions %>
+<%= render partial: 'transactions/table', model: @category.transactions %>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

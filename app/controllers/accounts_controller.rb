@@ -13,6 +13,8 @@ class AccountsController < ApplicationController
       redirect_to accounts_path
     end
     @transaction = Transaction.new
+    @transaction.account_id = params[:id]
+    @transactions = Transaction.where account_id: params[:id], user_id: current_user.id
   end
 
   before_action :authenticate_user!
