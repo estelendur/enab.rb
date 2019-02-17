@@ -60,6 +60,6 @@ class AccountsController < ApplicationController
   private
     def account_params
       params[:account][:user_id] = current_user.id
-      params.require(:account).permit(:name, :user_id)
+      params.require(:account).permit(:name, :user_id, :on_budget)
     end
 end
