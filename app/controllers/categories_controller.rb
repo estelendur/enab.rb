@@ -19,6 +19,9 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!
   def new
     @category = Category.new
+    @category.allocation = 0
+    @category.goal_amount = 0
+    @category.due_date = Date::today
   end
 
   before_action :authenticate_user!
