@@ -2,7 +2,7 @@ class TransactionsController < ApplicationController
 
   before_action :authenticate_user!
   def index
-    @transactions = Transaction.where user_id: current_user.id
+    @transactions = Transaction.where(user_id: current_user.id).order(date: :desc, amount: :asc)
   end
 
   before_action :authenticate_user!
@@ -47,7 +47,8 @@ class TransactionsController < ApplicationController
 
   before_action :authenticate_user!
   def destroy
-    @transaction = Transaction.find_by id: params[:id], user_id: current_user.id
+    @transaction = Transaction.find_by(id: params[:id], user_id: current_user.id)
+
     @transaction.destroy
 
     redirect_to transactions_path
