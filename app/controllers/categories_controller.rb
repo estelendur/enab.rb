@@ -13,6 +13,7 @@ class CategoriesController < ApplicationController
     end
     @transaction = Transaction.new
     @transaction.category_id = params[:id]
+    @transaction.date = Date::today
     @transactions = Transaction.where category_id: params[:id], user_id: current_user.id
   end
 

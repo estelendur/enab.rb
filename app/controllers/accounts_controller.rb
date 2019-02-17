@@ -14,6 +14,7 @@ class AccountsController < ApplicationController
     end
     @transaction = Transaction.new
     @transaction.account_id = params[:id]
+    @transaction.date = Date::today
     @transactions = Transaction.where account_id: params[:id], user_id: current_user.id
   end
 

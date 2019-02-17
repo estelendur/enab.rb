@@ -16,6 +16,7 @@ class TransactionsController < ApplicationController
   before_action :authenticate_user!
   def new
     @transaction = Transaction.new
+    @transaction.date = Date::today
   end
 
   before_action :authenticate_user!
