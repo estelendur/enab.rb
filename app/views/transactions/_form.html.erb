@@ -32,6 +32,11 @@
   </p>
 
   <p>
+    <%= form.radio_button :expense, true %> <%= form.label :expense_true, "Expense" %>
+    <%= form.radio_button :expense, false %> <%= form.label :expense_false, "Income" %>
+  </p>
+
+  <p>
     <%= form.label :memo %>
     <%= form.text_field :memo %>
   </p>

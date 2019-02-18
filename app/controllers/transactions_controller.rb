@@ -58,6 +58,7 @@ class TransactionsController < ApplicationController
   private
     def transaction_params
       params[:transaction][:user_id] = current_user.id
-      params.require(:transaction).permit(:date, :account_id, :category_id, :amount, :memo, :user_id)
+      params.require(:transaction)
+        .permit(:date, :account_id, :category_id, :amount, :memo, :user_id, :expense)
     end
 end
