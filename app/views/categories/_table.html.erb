@@ -5,6 +5,7 @@
       <th>Allocated</th>
       <th>Goal</th>
       <th>Due</th>
+      <th>Total spend last 30 days</th>
       <th colspan="3">Actions</th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
         <td><%= category.allocation %></td>
         <td><%= category.goal_amount %></td>
         <td><%= category.due_date %></td>
+        <td><%= category.last_30_days %></td>
         <td><%= link_to 'Show', category %></td>
         <td><%= link_to 'Edit', edit_category_path(category) %></td>
         <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
