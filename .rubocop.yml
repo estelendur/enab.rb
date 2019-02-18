@@ -1,0 +1,12 @@
+Documentation:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Style/MixinUsage:
+  Enabled: false
+Naming/MemoizedInstanceVariableName:
+  Enabled: false

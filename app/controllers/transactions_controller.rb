@@ -3,7 +3,8 @@
 class TransactionsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @transactions = Transaction.where(user_id: current_user.id).order(date: :desc, amount: :asc)
+    @transactions = Transaction.where(user_id: current_user.id)
+                               .order(date: :desc, amount: :asc)
   end
 
   before_action :authenticate_user!
@@ -20,7 +21,8 @@ class TransactionsController < ApplicationController
 
   before_action :authenticate_user!
   def edit
-    @transaction = Transaction.find_by id: params[:id], user_id: current_user.id
+    @transaction = Transaction.find_by id: params[:id],
+                                       user_id: current_user.id
   end
 
   before_action :authenticate_user!
@@ -36,7 +38,8 @@ class TransactionsController < ApplicationController
 
   before_action :authenticate_user!
   def update
-    @transaction = Transaction.find_by id: params[:id], user_id: current_user.id
+    @transaction = Transaction.find_by id: params[:id],
+                                       user_id: current_user.id
 
     if @transaction.update(transaction_params)
       redirect_to @transaction
@@ -47,7 +50,8 @@ class TransactionsController < ApplicationController
 
   before_action :authenticate_user!
   def destroy
-    @transaction = Transaction.find_by(id: params[:id], user_id: current_user.id)
+    @transaction = Transaction.find_by(id: params[:id],
+                                       user_id: current_user.id)
 
     @transaction.destroy
 
@@ -59,6 +63,7 @@ class TransactionsController < ApplicationController
   def transaction_params
     params[:transaction][:user_id] = current_user.id
     params.require(:transaction)
-          .permit(:date, :account_id, :category_id, :amount, :memo, :user_id, :expense)
+          .permit(:date, :account_id, :category_id, :amount, :memo, :user_id,
+                  :expense)
   end
 end

@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+# TODO: deal with rubocop AbcSize properly
+# (https://stackoverflow.com/questions/30932732/
+# what-is-meant-by-assignment-branch-condition-size-too-high-and-how-to-fix-it)
+
 class AccountsController < ApplicationController
   before_action :authenticate_user!
   def index
@@ -14,7 +18,8 @@ class AccountsController < ApplicationController
     @transaction = Transaction.new
     @transaction.account_id = params[:id]
     @transaction.date = Date.today
-    @transactions = Transaction.where account_id: params[:id], user_id: current_user.id
+    @transactions = Transaction.where account_id: params[:id],
+                                      user_id: current_user.id
   end
 
   before_action :authenticate_user!

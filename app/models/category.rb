@@ -6,7 +6,8 @@ class Category < ApplicationRecord
   def last_30_days
     return 0 if name.casecmp('initial balance').zero?
 
-    transactions = Transaction.where 'category_id = ? AND created_at > ?', id, (Date.today - 30)
+    transactions = Transaction.where 'category_id = ? AND created_at > ?',
+                                     id, (Date.today - 30)
     return 0 if transactions.empty?
 
     transactions
