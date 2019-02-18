@@ -1,5 +1,6 @@
-class TransactionsController < ApplicationController
+# frozen_string_literal: true
 
+class TransactionsController < ApplicationController
   before_action :authenticate_user!
   def index
     @transactions = Transaction.where(user_id: current_user.id).order(date: :desc, amount: :asc)
@@ -8,15 +9,13 @@ class TransactionsController < ApplicationController
   before_action :authenticate_user!
   def show
     @transaction = Transaction.find_by id: params[:id], user_id: current_user.id
-    unless @transaction
-      redirect_to transactions_path
-    end
+    redirect_to transactions_path unless @transaction
   end
 
   before_action :authenticate_user!
   def new
     @transaction = Transaction.new
-    @transaction.date = Date::today
+    @transaction.date = Date.today
   end
 
   before_action :authenticate_user!
@@ -56,9 +55,10 @@ class TransactionsController < ApplicationController
   end
 
   private
-    def transaction_params
-      params[:transaction][:user_id] = current_user.id
-      params.require(:transaction)
-        .permit(:date, :account_id, :category_id, :amount, :memo, :user_id, :expense)
-    end
+
+  def transaction_params
+    params[:transaction][:user_id] = current_user.id
+    params.require(:transaction)
+          .permit(:date, :account_id, :category_id, :amount, :memo, :user_id, :expense)
+  end
 end

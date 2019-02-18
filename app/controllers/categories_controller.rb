@@ -1,5 +1,6 @@
-class CategoriesController < ApplicationController
+# frozen_string_literal: true
 
+class CategoriesController < ApplicationController
   before_action :authenticate_user!
   def index
     @categories = Category.where(user_id: current_user.id).order(:due_date, :name) || []
@@ -8,12 +9,10 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!
   def show
     @category = Category.find_by id: params[:id], user_id: current_user.id
-    unless @category
-      redirect_to categories_path
-    end
+    redirect_to categories_path unless @category
     @transaction = Transaction.new
     @transaction.category_id = params[:id]
-    @transaction.date = Date::today
+    @transaction.date = Date.today
     @transactions = Transaction.where category_id: params[:id], user_id: current_user.id
   end
 
@@ -22,7 +21,7 @@ class CategoriesController < ApplicationController
     @category = Category.new
     @category.allocation = 0
     @category.goal_amount = 0
-    @category.due_date = Date::today
+    @category.due_date = Date.today
   end
 
   before_action :authenticate_user!
@@ -61,8 +60,9 @@ class CategoriesController < ApplicationController
   end
 
   private
-    def category_params
-      params[:category][:user_id] = current_user.id
-      params.require(:category).permit(:name, :allocation, :goal_amount, :due_date, :user_id)
-    end
+
+  def category_params
+    params[:category][:user_id] = current_user.id
+    params.require(:category).permit(:name, :allocation, :goal_amount, :due_date, :user_id)
+  end
 end

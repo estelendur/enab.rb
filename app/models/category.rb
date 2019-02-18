@@ -1,16 +1,16 @@
+# frozen_string_literal: true
+
 class Category < ApplicationRecord
   has_many :transactions
 
   def last_30_days
-    if self.name.downcase == 'initial balance'
-      return 0
-    end
-    transactions = Transaction.where "category_id = ? AND created_at > ?", self.id, (Date::today - 30)
-    unless transactions.length > 0
-      return 0
-    end
-    return transactions
-      .map{|t| if t.expense then t.amount else -t.amount end}
+    return 0 if name.casecmp('initial balance').zero?
+
+    transactions = Transaction.where 'category_id = ? AND created_at > ?', id, (Date.today - 30)
+    return 0 if transactions.empty?
+
+    transactions
+      .map { |t| t.expense ? t.amount : -t.amount }
       .reduce(:+)
   end
 end

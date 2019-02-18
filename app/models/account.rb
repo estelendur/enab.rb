@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 class Account < ApplicationRecord
   has_many :transactions
 
   def balance
-    unless self.transactions.length > 0
-      return 0
-    end
-    return self.transactions
-      .map{|t| if t.expense then -t.amount else t.amount end}
+    return 0 if transactions.empty?
+
+    transactions
+      .map { |t| t.expense ? -t.amount : t.amount }
       .reduce(:+)
   end
 end

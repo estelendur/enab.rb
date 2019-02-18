@@ -1,5 +1,6 @@
-class AccountsController < ApplicationController
+# frozen_string_literal: true
 
+class AccountsController < ApplicationController
   before_action :authenticate_user!
   def index
     @accounts = Account.where user_id: current_user.id
@@ -9,12 +10,10 @@ class AccountsController < ApplicationController
   before_action :authenticate_user!
   def show
     @account = Account.find_by id: params[:id], user_id: current_user.id
-    unless @account
-      redirect_to accounts_path
-    end
+    redirect_to accounts_path unless @account
     @transaction = Transaction.new
     @transaction.account_id = params[:id]
-    @transaction.date = Date::today
+    @transaction.date = Date.today
     @transactions = Transaction.where account_id: params[:id], user_id: current_user.id
   end
 
@@ -59,8 +58,9 @@ class AccountsController < ApplicationController
   end
 
   private
-    def account_params
-      params[:account][:user_id] = current_user.id
-      params.require(:account).permit(:name, :user_id, :on_budget)
-    end
+
+  def account_params
+    params[:account][:user_id] = current_user.id
+    params.require(:account).permit(:name, :user_id, :on_budget)
+  end
 end
