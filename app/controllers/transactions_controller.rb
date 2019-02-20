@@ -30,6 +30,13 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(transaction_params)
 
     if @transaction.save
+      if @transaction.expense
+        category = @transaction.category
+        category.allocation = category.allocation - @transaction.amount
+        unless category.save
+          flash[:error] = "Unable to update category allocation"
+        end
+      end
       redirect_to @transaction
     else
       render 'new'
@@ -40,8 +47,16 @@ class TransactionsController < ApplicationController
   def update
     @transaction = Transaction.find_by id: params[:id],
                                        user_id: current_user.id
+    old_amount = @transaction.amount
 
     if @transaction.update(transaction_params)
+      if @transaction.expense
+        category = @transaction.category
+        category.allocation = category.allocation + (old_amount - @transaction.amount)
+        unless category.save
+          flash[:error] = "Unable to update category allocation"
+        end
+      end
       redirect_to @transaction
     else
       render 'edit'
