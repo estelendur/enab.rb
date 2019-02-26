@@ -3,7 +3,7 @@
 class TransactionsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @transactions = Transaction.for_user current_user.id
+    @transactions = Transaction.for_user(current_user.id)
   end
 
   before_action :authenticate_user!
