@@ -6,7 +6,7 @@
 <%= render 'transactions/form' %>
 
 <h2>Transactions:</h2>
-<%= render partial: 'transactions/table', model: @account.transactions %>
+<%= render partial: 'transactions/table', model: @transactions %>
 
 <%= link_to 'Edit', edit_account_path(@account) %> |
 <%= link_to 'Back', accounts_path %>

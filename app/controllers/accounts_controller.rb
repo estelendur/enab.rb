@@ -18,8 +18,7 @@ class AccountsController < ApplicationController
     @transaction = Transaction.new
     @transaction.account_id = params[:id]
     @transaction.date = Date.today
-    @transactions = Transaction.where account_id: params[:id],
-                                      user_id: current_user.id
+    @transactions = Transaction.for_account params[:id], current_user.id
   end
 
   before_action :authenticate_user!
