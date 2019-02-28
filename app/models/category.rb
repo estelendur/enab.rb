@@ -11,7 +11,7 @@ class Category < ApplicationRecord
     return 0 if transactions.empty?
 
     transactions
-      .map { |t| t.expense ? t.amount : -t.amount }
+      .map { |t| t.expense ? t.amount : 0 }
       .reduce(:+)
   end
 end
