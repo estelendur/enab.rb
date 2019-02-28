@@ -19,11 +19,13 @@
   <p>
     <%= form.label :account %>
     <%= form.collection_select :account_id, Account.where(user_id: current_user.id), :id, :name %>
+    <%= link_to 'New Account', new_account_path %>
   </p>
 
   <p>
     <%= form.label :category %>
     <%= form.collection_select :category_id, Category.where(user_id: current_user.id), :id, :name %>
+    <%= link_to 'New Category', new_category_path %>
   </p>
 
   <p>
