@@ -3,8 +3,8 @@
 <p><strong>Date:</strong> <%= @transaction.date %></p>
 <p><strong>Amount:</strong> <%= @transaction.amount %></p>
 <p><strong>Expense/Income:</strong> <%= if @transaction.expense then 'Expense' else 'Income' end %></p>
-<p><strong>Account:</strong> <%= @transaction.account.name %></p>
-<p><strong>Category:</strong> <%= @transaction.category.name %></p>
+<p><strong>Account:</strong> <%= link_to @transaction.account.name, account_path(@transaction.account) %></p>
+<p><strong>Category:</strong> <%= link_to @transaction.category.name, category_path(@transaction.category) %></p>
 <p><strong>Memo:</strong> <%= @transaction.memo %></p>
 
 <%= link_to 'Edit', edit_transaction_path(@transaction) %> |
