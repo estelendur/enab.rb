@@ -3,6 +3,7 @@
     <tr>
       <th>Name</th>
       <th>Balance</th>
+      <th>Cleared Balance</th>
       <th>On Budget?</th>
       <th colspan="2">Actions</th>
     </tr>
@@ -13,6 +14,7 @@
       <tr>
         <td><%= account.name %></td>
         <td><%= account.balance %></td>
+        <td><%= account.cleared_balance %></td>
         <td><%= account.on_budget %></td>
         <td><%= link_to 'Show', account %></td>
         <td><%= link_to 'Edit', edit_account_path(account) %></td>

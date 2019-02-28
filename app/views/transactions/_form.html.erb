@@ -39,6 +39,11 @@
   </p>
 
   <p>
+    <%= form.radio_button :cleared, true %> <%= form.label :cleared_true, "Cleared" %>
+    <%= form.radio_button :cleared, false %> <%= form.label :cleared_false, "Uncleared" %>
+  </p>
+
+  <p>
     <%= form.label :memo %>
     <%= form.text_field :memo %>
   </p>

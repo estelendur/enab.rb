@@ -4,6 +4,7 @@
       <th>Date</th>
       <th>Amount</th>
       <th>Expense/Income</th>
+      <th>Cleared?</th>
       <th>Account</th>
       <th>Category</th>
       <th>Memo</th>
@@ -17,6 +18,7 @@
         <td><%= transaction.date %></td>
         <td><%= transaction.amount %></td>
         <td><%= if transaction.expense then 'Expense' else 'Income' end %></td>
+        <td><%= if transaction.cleared then 'Yes' else 'No' end %></td>
         <td><%= transaction.account.name %></td>
         <td><%= transaction.category.name %></td>
         <td><%= transaction.memo %></td>
