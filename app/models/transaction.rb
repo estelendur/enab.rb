@@ -15,5 +15,4 @@ class Transaction < ApplicationRecord
   def self.for_user(user_id)
     where(user_id: user_id).order(date: :desc, amount: :asc)
   end
-
 end

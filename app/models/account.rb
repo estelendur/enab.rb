@@ -15,7 +15,7 @@ class Account < ApplicationRecord
     return 0 if transactions.empty?
 
     transactions
-      .filter { |t| t.cleared }
+      .filter { t.cleared }
       .map { |t| t.expense ? -t.amount : t.amount }
       .reduce(:+)
   end

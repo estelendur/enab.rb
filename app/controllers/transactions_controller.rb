@@ -34,7 +34,7 @@ class TransactionsController < ApplicationController
         category.allocation = category.allocation - @transaction.amount
         category.allocation = [0, category.allocation].max
         unless category.save
-          flash[:error] = "Unable to update category allocation"
+          flash[:error] = 'Unable to update category allocation'
         end
       end
       redirect_to @transaction
@@ -55,7 +55,7 @@ class TransactionsController < ApplicationController
         category.allocation = category.allocation + (old_amount - @transaction.amount)
         category.allocation = [0, category.allocation].max
         unless category.save
-          flash[:error] = "Unable to update category allocation"
+          flash[:error] = 'Unable to update category allocation'
         end
       end
       redirect_to @transaction
