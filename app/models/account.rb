@@ -4,7 +4,7 @@ class Account < ApplicationRecord
   has_many :transactions
 
   def balance
-    return 0 if transactions.empty?
+    return 0 if transactions.length.zero?
 
     transactions
       .map { |t| t.expense ? -t.amount : t.amount }
@@ -12,10 +12,10 @@ class Account < ApplicationRecord
   end
 
   def cleared_balance
-    return 0 if transactions.empty?
+    return 0 if transactions.length.zero?
 
     transactions
-      .filter { t.cleared }
+      .select { |t| t.cleared }
       .map { |t| t.expense ? -t.amount : t.amount }
       .reduce(:+)
   end
