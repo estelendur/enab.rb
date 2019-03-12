@@ -4,7 +4,7 @@ class Category < ApplicationRecord
   has_many :transactions
 
   def last_30_days
-    return 0 if name.casecmp('initial balance').zero?
+    return 0 unless self.on_budget
 
     transactions = Transaction.where 'category_id = ? AND created_at > ?',
                                      id, (Date.today - 30)

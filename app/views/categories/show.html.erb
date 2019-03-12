@@ -4,6 +4,10 @@
 <p><strong>Allocated:</strong> <%= @category.allocation %></p>
 <p><strong>Goal:</strong> <%= @category.goal_amount %></p>
 <p><strong>Due:</strong> <%= @category.due_date %></p>
+<p><strong>Included in Retrospective Spending?</strong> <%= @category.on_budget %></p>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
 
 <h2>Add a transaction:</h2>
 <%= render 'transactions/form' %>
@@ -11,7 +15,5 @@
 <h2>Transactions:</h2>
 <%= render partial: 'transactions/table', model: @transactions %>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
 <hr />
 <%= link_to 'Destroy', category_path(@category), method: :delete, data: { confirm: 'Are you sure?' } %>

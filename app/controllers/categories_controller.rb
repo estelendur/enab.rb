@@ -65,6 +65,6 @@ class CategoriesController < ApplicationController
   def category_params
     params[:category][:user_id] = current_user.id
     params.require(:category).permit(:name, :allocation, :goal_amount,
-                                     :due_date, :user_id)
+                                     :due_date, :user_id, :on_budget)
   end
 end

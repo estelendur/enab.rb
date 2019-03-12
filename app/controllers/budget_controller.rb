@@ -18,5 +18,7 @@ class BudgetController < ApplicationController
     @allocated_money = @categories.map { |c| c.allocation || 0 }
                                   .reduce(:+) || 0
     @remaining_money = @total_money - @allocated_money
+    @thirty_day_spend = @categories.map { |c| c.last_30_days || 0 }
+                                   .reduce(:+) || 0
   end
 end

@@ -31,6 +31,11 @@
     <%= form.date_field :due_date %>
   </p>
 
+  <p>
+    <%= form.label :on_budget, 'Include in retrospective spending?' %>
+    <%= form.check_box :on_budget %>
+  </p>
+
   <div class="actions">
     <%= form.submit %>
   </div>
