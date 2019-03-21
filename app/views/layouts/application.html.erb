@@ -32,6 +32,6 @@
       <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
     <%= yield %>
-    <script src="/sorttable.js"></script>
+    <%= javascript_include_tag "sorttable" %>
   </body>
 </html>
