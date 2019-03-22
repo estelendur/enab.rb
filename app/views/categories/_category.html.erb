@@ -6,11 +6,18 @@
     <% if category.allocation %>
       <div><%= category.allocation %> is currently allocated in this category.</div>
     <% end %>
-    <% if category.goal_amount && category.due_date %>
-      <div>This category needs <%= category.goal_amount %> by <%= category.due_date %>.</div>
-    <% end %>
     <% if category.on_budget %>
       <div>This category is included in overall spending history.</div>
+    <% end %>
+    <% if category.goal_amount && category.due_date %>
+      <div>This category needs <%= number_to_currency(category.goal_amount) %> total, or <%= number_to_currency(category.money_left) %> additional, by <%= category.due_date %>.</div>
+      <ul class="list-group">
+        <li class="list-group-item">Save <%= number_to_currency(category.save_daily) %> per day (<%= category.days_until_goal %> left)</li>
+        <li class="list-group-item">Save <%= number_to_currency(category.save_weekly) %> per week (<%= category.weeks_left %> left)</li>
+        <li class="list-group-item">Save <%= number_to_currency(category.save_biweekly) %> per 2 weeks (<%= category.biweeks_left %> left)</li>
+        <li class="list-group-item">Save <%= number_to_currency(category.save_semimonthly) %> twice per month (<%= category.semimonths_left %> left)</li>
+        <li class="list-group-item">Save <%= number_to_currency(category.save_monthly) %> per month (<%= category.months_left %> left)</li>
+      </ul>
     <% end %>
   </div>
 </div>
