@@ -11,44 +11,56 @@
     </div>
   <% end %>
 
-  <p>
+  <div class="form-group">
     <%= form.label :date %>
-    <%= form.date_field :date %>
-  </p>
+    <%= form.date_field :date, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= form.label :account %>
-    <%= form.collection_select :account_id, Account.where(user_id: current_user.id), :id, :name %>
-    <%= link_to 'New Account', new_account_path %>
-  </p>
+    <%= link_to 'New Account', new_account_path, class: "btn btn-sm btn-secondary float-right" %>
+    <%= form.collection_select :account_id, Account.where(user_id: current_user.id), :id, :name, {}, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= form.label :category %>
-    <%= form.collection_select :category_id, Category.where(user_id: current_user.id), :id, :name %>
-    <%= link_to 'New Category', new_category_path %>
-  </p>
+    <%= link_to 'New Category', new_category_path, class: "btn btn-sm btn-secondary float-right" %>
+    <%= form.collection_select :category_id, Category.where(user_id: current_user.id).order(:name), :id, :name, {}, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= form.label :amount %>
-    <%= form.number_field :amount, step: 0.01 %>
-  </p>
+    <%= form.number_field :amount, step: 0.01, class: "form-control" %>
+  </div>
 
-  <p>
-    <%= form.radio_button :expense, true %> <%= form.label :expense_true, "Expense" %>
-    <%= form.radio_button :expense, false %> <%= form.label :expense_false, "Income" %>
-  </p>
+  <div class="form-row">
+    <div class="col">
+      <strong>Expense/Income</strong>
+      <div class="form-check">
+        <%= form.radio_button :expense, true %> <%= form.label :expense_true, "Expense" %>
+      </div>
+      <div class="form-check">
+        <%= form.radio_button :expense, false %> <%= form.label :expense_false, "Income" %>
+      </div>
+    </div>
 
-  <p>
-    <%= form.radio_button :cleared, true %> <%= form.label :cleared_true, "Cleared" %>
-    <%= form.radio_button :cleared, false %> <%= form.label :cleared_false, "Uncleared" %>
-  </p>
+    <div class="col">
+      <strong>Cleared/Uncleared</strong>
+      <div class="form-check">
+        <%= form.radio_button :cleared, true %> <%= form.label :cleared_true, "Cleared" %>
+      </div>
+      <div class="form-check">
+        <%= form.radio_button :cleared, false %> <%= form.label :cleared_false, "Uncleared" %>
+      </div>
+    </div>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= form.label :memo %>
-    <%= form.text_field :memo %>
-  </p>
+    <%= form.text_field :memo, class: "form-control" %>
+  </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Create Transaction", class: "btn btn-success" %>
   </div>
 <% end %>

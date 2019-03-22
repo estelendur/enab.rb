@@ -1,3 +1,12 @@
-<p><strong>Name:</strong> <%= account.name %></p>
-<p><strong>Balance:</strong> <%= account.balance %></p>
-<p><strong>Cleared Balance:</strong> <%= account.cleared_balance %></p>
+<div class="card mb-1">
+  <div class="card-header">
+    <%= account.name %>
+  </div>
+  <div class="card-body">
+    <div><strong>Balance:</strong> <%= account.balance %></div>
+    <div><strong>Cleared Balance:</strong> <%= account.cleared_balance %></div>
+    <% if account.on_budget %>
+      <div>This account is included in overall spending history.</div>
+    <% end %>
+  </div>
+</div>

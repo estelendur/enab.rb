@@ -1,4 +1,4 @@
-<table class="sortable">
+<table class="table sortable">
   <thead>
     <tr>
       <th>Name</th>
@@ -18,8 +18,8 @@
         <td><%= category.goal_amount %></td>
         <td><%= category.due_date %></td>
         <td><%= category.last_30_days %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
+        <td><%= link_to 'Show', category, class: "btn btn-sm btn-secondary" %></td>
+        <td><%= link_to 'Edit', edit_category_path(category), class: "btn btn-sm btn-secondary" %></td>
       </tr>
     <% end %>
   </tbody>

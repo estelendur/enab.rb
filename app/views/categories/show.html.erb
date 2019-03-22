@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p><strong>Name:</strong> <%= @category.name %></p>
-<p><strong>Allocated:</strong> <%= @category.allocation %></p>
-<p><strong>Goal:</strong> <%= @category.goal_amount %></p>
-<p><strong>Due:</strong> <%= @category.due_date %></p>
-<p><strong>Included in Retrospective Spending?</strong> <%= @category.on_budget %></p>
+<%= render partial: 'category', object: @category %>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<div class="row">
+  <div class="col">
+    <%= link_to 'Edit', edit_category_path(@category), class: "btn btn-secondary" %>
+    <%= link_to 'Back', categories_path, class: "btn btn-secondary" %>
+  </div>
+</div>
 
 <h2>Add a transaction:</h2>
 <%= render 'transactions/form' %>
@@ -16,4 +16,4 @@
 <%= render partial: 'transactions/table', model: @transactions %>
 
 <hr />
-<%= link_to 'Destroy', category_path(@category), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Destroy', category_path(@category), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>

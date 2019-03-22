@@ -1,5 +1,16 @@
-<p><strong>Name:</strong> <%= category.name %></p>
-<p><strong>Allocated:</strong> <%= category.allocation %></p>
-<p><strong>Goal:</strong> <%= category.goal_amount %></p>
-<p><strong>Due:</strong> <%= category.due_date %></p>
-
+<div class="card mb-1">
+  <div class="card-header">
+    <%= category.name %>
+  </div>
+  <div class="card-body">
+    <% if category.allocation %>
+      <div><%= category.allocation %> is currently allocated in this category.</div>
+    <% end %>
+    <% if category.goal_amount && category.due_date %>
+      <div>This category needs <%= category.goal_amount %> by <%= category.due_date %>.</div>
+    <% end %>
+    <% if category.on_budget %>
+      <div>This category is included in overall spending history.</div>
+    <% end %>
+  </div>
+</div>

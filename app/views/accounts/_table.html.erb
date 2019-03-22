@@ -1,4 +1,4 @@
-<table class="sortable">
+<table class="table sortable">
   <thead>
     <tr>
       <th>Name</th>
@@ -16,8 +16,8 @@
         <td><%= account.balance %></td>
         <td><%= account.cleared_balance %></td>
         <td><%= account.on_budget %></td>
-        <td><%= link_to 'Show', account %></td>
-        <td><%= link_to 'Edit', edit_account_path(account) %></td>
+        <td><%= link_to 'Show', account, class: "btn btn-sm btn-secondary" %></td>
+        <td><%= link_to 'Edit', edit_account_path(account), class: "btn btn-sm btn-secondary" %></td>
       </tr>
     <% end %>
   </tbody>

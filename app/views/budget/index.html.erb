@@ -1,6 +1,6 @@
 <h1>Overview</h1>
 
-<table>
+<table class="table">
   <thead>
     <th>Available</th>
     <th>Allocated</th>
@@ -17,14 +17,27 @@
   </tbody>
 </table>
 
-<h2>Accounts</h2>
-<%= link_to 'New Account', new_account_path %>
+<div class="row">
+  <div class="col">
+    <h2 class="float-left">Accounts</h2>
+    <%= link_to 'New Account', new_account_path, class: "btn btn-primary float-right" %>
+  </div>
+</div>
 <%= render partial: 'accounts/table' %>
 
-<h2>Categories</h2>
-<%= link_to 'New Category', new_category_path %>
+<div class="row">
+  <div class="col">
+    <h2 class="float-left">Categories</h2>
+    <%= link_to 'New Category', new_category_path, class: "btn btn-primary float-right" %>
+  </div>
+</div>
 <%= render partial: 'categories/table' %>
 
-<h2>Transactions</h2>
-<%= link_to 'New Transaction', new_transaction_path %>
+
+<div class="row">
+  <div class="col">
+    <h2 class="float-left">Transactions</h2>
+    <%= link_to 'New Transaction', new_transaction_path, class: "btn btn-primary float-right" %>
+  </div>
+</div>
 <%= render partial: 'transactions/table' %>

@@ -11,32 +11,32 @@
     </div>
   <% end %>
 
-  <p>
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
-  </p>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= form.label :allocation %>
-    <%= form.number_field :allocation, step: 0.01 %>
-  </p>
+    <%= form.number_field :allocation, step: 0.01, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= form.label :goal_amount %>
-    <%= form.number_field :goal_amount, step: 0.01 %>
-  </p>
+    <%= form.number_field :goal_amount, step: 0.01, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group">
     <%= form.label :due_date %>
-    <%= form.date_field :due_date %>
-  </p>
+    <%= form.date_field :due_date, class: "form-control" %>
+  </div>
 
-  <p>
+  <div class="form-check">
     <%= form.label :on_budget, 'Include in retrospective spending?' %>
     <%= form.check_box :on_budget %>
-  </p>
+  </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Create Category", class: "btn btn-success" %>
   </div>
 <% end %>

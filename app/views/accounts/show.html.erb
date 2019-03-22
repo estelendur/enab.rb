@@ -8,7 +8,7 @@
 <h2>Transactions:</h2>
 <%= render partial: 'transactions/table', model: @transactions %>
 
-<%= link_to 'Edit', edit_account_path(@account) %> |
-<%= link_to 'Back', accounts_path %>
+<%= link_to 'Edit', edit_account_path(@account), class: "btn btn-secondary" %>
+<%= link_to 'Back', accounts_path, class: "btn btn-secondary" %>
 <hr />
-<%= link_to 'Destroy', account_path(@account), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Destroy', account_path(@account), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
